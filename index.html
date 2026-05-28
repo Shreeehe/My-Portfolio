@@ -62,10 +62,12 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 1;
       opacity: 0.6;
+      will-change: transform;
+      transform: translateZ(0);
     }
 
     .wrap {
@@ -91,7 +93,7 @@
     nav.scrolled {
       background: rgba(10, 10, 8, 0.95);
       border-color: var(--border);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(8px);
     }
 
     .nav-logo {
@@ -991,29 +993,84 @@
     /* RESPONSIVE */
     @media(max-width: 900px) {
       nav {
-        padding: 14px 20px;
+        padding: 12px 20px;
+        justify-content: center;
+        background: rgba(10, 10, 8, 0.95);
+        border-color: var(--border);
+        backdrop-filter: blur(8px);
       }
 
       .nav-links {
         display: none;
       }
 
+      .visitor-pill {
+        display: none; /* Hide on small mobile to save space */
+      }
+
       #hero {
         grid-template-columns: 1fr;
-        padding: 90px 20px 50px;
-        gap: 40px;
+        padding: 80px 20px 40px;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .hero-eyebrow {
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .hero-dual-role {
+        justify-content: center;
+      }
+
+      .hero-bio {
+        margin: 24px auto 0;
+      }
+
+      .hero-cta {
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .btn {
+        width: 100%; /* Stack buttons on mobile for easier tapping */
+        justify-content: center;
+        padding: 14px 22px;
+        font-size: 0.8rem;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-cell {
+        padding: 16px;
+      }
+
+      .stat-n {
+        font-size: 1.8rem;
       }
 
       section {
-        padding: 60px 20px;
+        padding: 50px 20px;
+      }
+
+      .sec-title {
+        margin-bottom: 30px;
       }
 
       .exp-item {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 8px;
+        padding: 24px 0;
       }
 
       .skills-outer {
+        grid-template-columns: 1fr;
+      }
+
+      .proj-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1021,11 +1078,34 @@
         flex-direction: column;
       }
 
-      footer {
-        padding: 20px;
-        flex-direction: column;
-        gap: 6px;
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .edu-card {
+        grid-template-columns: 1fr;
         text-align: center;
+      }
+
+      .edu-icon {
+        margin: 0 auto;
+      }
+
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 30px 20px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .btn-copy {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 22px;
       }
     }
 
@@ -1270,9 +1350,15 @@
 
     @media (max-width:768px) {
       .hero-profile {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 16px;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 24px;
+      }
+
+      .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
     }
 
@@ -1281,6 +1367,7 @@
       opacity: 0;
       transform: translateY(16px);
       transition: opacity 0.6s ease, transform 0.6s ease;
+      will-change: opacity, transform;
     }
 
     .reveal.visible {
@@ -1334,10 +1421,8 @@
           <strong>Poultry & AgriTech AI</strong>.
         </p>
         <div class="hero-cta">
-          <a href="https://www.canva.com/design/DAHAu5l_7X0/ADHtUcrf-a-eeer9gUTO0g/edit?utm_content=DAHAu5l_7X0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-            target="_blank" class="btn btn-gold">↓ Data Scientist Resume</a>
-          <a href="https://www.canva.com/design/DAHDh5LYnvk/GrEUuNED9v4u8exxvar3mw/edit?utm_content=DAHDh5LYnvk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-            target="_blank" class="btn btn-red">↓ AI/ML Resume</a>
+          <a href="https://flowcv.com/resume/hn4fr8u8vvcf"
+            target="_blank" class="btn btn-gold">↓ Download Resume</a>
           <a href="#contact" class="btn btn-ghost">Hire Me →</a>
         </div>
       </div>
@@ -1913,23 +1998,13 @@
           </div>
           <div class="lc-arr">→</div>
         </a>
-        <a href="https://www.canva.com/design/DAHAu5l_7X0/ADHtUcrf-a-eeer9gUTO0g/edit?utm_content=DAHAu5l_7X0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+        <a href="https://flowcv.com/resume/hn4fr8u8vvcf"
           target="_blank" class="link-card g">
-          <div class="lc-icon" style="font-family:var(--sans);font-weight:800;font-size:0.7rem;color:var(--accent3)">DS
+          <div class="lc-icon" style="font-family:var(--sans);font-weight:800;font-size:0.7rem;color:var(--accent3)">CV
           </div>
           <div>
-            <div class="lc-name">Data Scientist Resume</div>
-            <div class="lc-desc">View on Canva</div>
-          </div>
-          <div class="lc-arr">→</div>
-        </a>
-        <a href="https://www.canva.com/design/DAHDh5LYnvk/GrEUuNED9v4u8exxvar3mw/edit?utm_content=DAHDh5LYnvk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-          target="_blank" class="link-card r">
-          <div class="lc-icon" style="font-family:var(--sans);font-weight:800;font-size:0.7rem;color:var(--accent2)">AI
-          </div>
-          <div>
-            <div class="lc-name">AI/ML Resume</div>
-            <div class="lc-desc">View on Canva</div>
+            <div class="lc-name">Full Resume</div>
+            <div class="lc-desc">View on FlowCV</div>
           </div>
           <div class="lc-arr">→</div>
         </a>
@@ -2005,8 +2080,12 @@
         this.c = Math.random() > .6 ? '232,197,71' : '224,92,58';
       }
       tick() {
-        const dx = pmx - this.x, dy = pmy - this.y, d = Math.hypot(dx, dy);
-        if (d < 100) { this.vx -= dx / d * .03; this.vy -= dy / d * .03; }
+        const dx = pmx - this.x, dy = pmy - this.y;
+        const dSq = dx * dx + dy * dy;
+        if (dSq < 10000) { // 100 * 100
+          const d = Math.sqrt(dSq);
+          this.vx -= dx / d * .03; this.vy -= dy / d * .03;
+        }
         this.vx *= .99; this.vy *= .99;
         this.x += this.vx; this.y += this.vy;
         if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
@@ -2016,13 +2095,20 @@
         ctx.fillStyle = `rgba(${this.c},${this.a})`; ctx.fill();
       }
     }
-    for (let i = 0; i < 90; i++) pts.push(new P());
+    const particleCount = window.innerWidth < 900 ? 30 : 50;
+    for (let i = 0; i < particleCount; i++) pts.push(new P());
     function connect() {
-      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
-        const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
-        if (d < 110) {
-          ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
-          ctx.strokeStyle = `rgba(232,197,71,${.06 * (1 - d / 110)})`; ctx.lineWidth = .5; ctx.stroke();
+      const radiusSq = 110 * 110;
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const dSq = dx * dx + dy * dy;
+          if (dSq < radiusSq) {
+            const d = Math.sqrt(dSq);
+            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.strokeStyle = `rgba(232,197,71,${.06 * (1 - d / 110)})`; ctx.lineWidth = .5; ctx.stroke();
+          }
         }
       }
     }
